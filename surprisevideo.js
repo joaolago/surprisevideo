@@ -38,6 +38,7 @@ SurpriseVideo = ( function () {
       Youtube.player.stopVideo();
     }
     hideAllBut("#start-screen"); 
+    $( "body" ).toggleClass( "video-on" );
   }
 
 
@@ -109,6 +110,7 @@ SurpriseVideo = ( function () {
           }
 
           hideAllBut( "#video-screen" );
+          $( "body" ).toggleClass( "video-on" );
         } else {
           hideAllBut( "#error-screen" );
         }
