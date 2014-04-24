@@ -1,5 +1,6 @@
 SurpriseVideo = ( function () {
   var youtube_id = "";
+  var sublist;
 
   var init = function(){
     $( document ).ready( function () {
@@ -18,6 +19,7 @@ SurpriseVideo = ( function () {
     $('.category').on( 'click', function(evt){ toggleCategory(evt); } );
     $('.genre').on( 'click', function(evt){  toggleGenre(evt); } );
     $( document ).on( 'click', '.reset', function(evt){  reset(evt); } );
+    $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
 
     Youtube.init();
   }
@@ -38,9 +40,8 @@ SurpriseVideo = ( function () {
       Youtube.player.stopVideo();
     }
     hideAllBut("#start-screen"); 
-    $( "body" ).toggleClass( "video-on" );
+    $( "body" ).removeClass( "video-on" );
   }
-
 
   var hideAllBut = function(keepalive){
     $( ".screen" ).fadeOut("fast", function(evt){
@@ -50,8 +51,19 @@ SurpriseVideo = ( function () {
     });
   }
 
-  var getNewVideo = function () {
+  var getAnotherVideo = function () {
+    youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
 
+    if(Youtube.player){
+      Youtube.player.loadVideoById( youtube_id.toString() );
+    }
+
+    if(sublist.length < 1){
+      $( ".get-me-another" ).hide();
+    }
+  }
+
+  var getNewVideo = function () {
     var selectedAuthor = $(".genre.selected").data("name") == undefined ? "all" : $(".genre.selected").data("name");
     var category = assembleCategories();
 
@@ -95,22 +107,23 @@ SurpriseVideo = ( function () {
       {}, 
       function(data){
         if(data.feed.entry){
+
           var sorted = _(data.feed.entry).sortBy(function(entry){
             return entry.media$group.yt$duration.seconds;
           });
 
-          var sublist = _.filter(sorted, function(entry){
+          sublist = _.filter(sorted, function(entry){
             return entry.media$group.yt$duration.seconds <= durationValue;
           });
 
-          youtube_id = _.last(sublist).id.$t.match(/video:(\S*.)/)[1];
+          youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
 
           if(Youtube.player){
             Youtube.player.loadVideoById( youtube_id.toString() );
           }
 
           hideAllBut( "#video-screen" );
-          $( "body" ).toggleClass( "video-on" );
+          $( "body" ).addClass( "video-on" );
         } else {
           hideAllBut( "#error-screen" );
         }

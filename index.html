@@ -1,10 +1,9 @@
 <head>
-  <title>surprisevideo</title>
+  <title>SurpriseVideo</title>
 
   <link href="vendor/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
   <link href="vendor/css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css" media="all">
   <link href="css/surprisevideo.css" rel="stylesheet" type="text/css" media="all">
-
 
   <script type="text/javascript" src="vendor/js/jquery.js"></script>
   <script type="text/javascript" src="vendor/js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -16,7 +15,6 @@
   <script type="text/javascript" src="sources.js"></script>
   <script type="text/javascript" src="surprisevideo.js"></script>
   
-
   <meta name="viewport" content="width=640, user-scalable=no" />
 </head>
 
@@ -27,10 +25,10 @@
       <h3>Categorize it</h3>
       <p class="note">Pick the type of video you'd like to watch. We curate youtube channels and add them to the list it fits best.</p>
       <ul class="genres">
-        <li class="genre selected" data-name="artsy">artsy</li>
+        <li class="genre selected" data-name="all">all</li>
+        <li class="genre" data-name="artsy">artsy</li>
         <li class="genre" data-name="interesting">interesting</li>
         <li class="genre" data-name="funny">funny</li>
-        <li class="genre" data-name="all">all</li>
       </ul>
 
       <h3>Time-box it</h3>
@@ -46,6 +44,7 @@
         <div id="player"></div>
       </div>
       <button class="btn reset">Back to Start</button>
+      <button class="btn get-me-another">Give Me Another</button>
     </div>
     <div id="error-screen" class="screen">
       <div class="error">
