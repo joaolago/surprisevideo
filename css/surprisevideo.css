@@ -1,15 +1,24 @@
 body {
-  background: white; }
+  background: white;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s; }
   body.video-on {
-    background: #b3b3b3;
-    -webkit-transition-duration: 0.2s;
-    -moz-transition-duration: 0.2s;
-    transition-duration: 0.2s; }
+    background: #1a1a1a;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    transition-duration: 0.5s; }
+    body.video-on #footer {
+      color: white;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      transition-duration: 0.5s; }
     body.video-on .content .screen {
-      background: #717171;
-      -webkit-transition-duration: 0.2s;
-      -moz-transition-duration: 0.2s;
-      transition-duration: 0.2s; }
+      background: #0b0b0b;
+      border: solid 1px #000;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      transition-duration: 0.5s; }
   body ul {
     list-style: none;
     margin: 10px 0 10px 0;
@@ -43,7 +52,10 @@ body {
     body .content .screen {
       background: #f1f1f1;
       padding: 30px;
-      border: solid 1px #ccc; }
+      border: solid 1px #ccc;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      transition-duration: 0.5s; }
       body .content .screen#video-screen {
         display: none; }
         body .content .screen#video-screen #video-wrapper {
@@ -90,7 +102,10 @@ body {
     color: black;
     text-align: center;
     font-size: 12px;
-    margin: 5px; }
+    margin: 5px;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    transition-duration: 0.5s; }
   @media only screen and (max-width: 1136px) {
     body .content {
       margin: 0; }

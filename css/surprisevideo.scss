@@ -9,14 +9,21 @@ $button-selected-background: #44bbff;
 
 body{
   background: $main-background;
-  
+  @include transition-duration(.5s);
+
   &.video-on{
-    background: darken($main-background, 30%);
-    @include transition-duration(.2s);
+    background: darken($main-background, 90%);
+    @include transition-duration(.5s);
+
+    #footer{
+      color: $button-text;
+      @include transition-duration(.5s);
+    }
 
     .content .screen{
-      background: darken($secondary-background, 50%);
-      @include transition-duration(.2s);
+      background: darken($secondary-background, 90%);
+      border: solid 1px #000;
+      @include transition-duration(.5s);
     }
   }
 
@@ -72,6 +79,8 @@ body{
       background: $secondary-background;
       padding: 30px;
       border: solid 1px #ccc;
+      @include transition-duration(.5s);
+
 
       &#video-screen{
         display: none;
@@ -147,6 +156,7 @@ body{
     text-align: center;
     font-size: 12px;
     margin: 5px;
+    @include transition-duration(.5s);
   }
 
   @media only screen and (max-width: 1136px){
