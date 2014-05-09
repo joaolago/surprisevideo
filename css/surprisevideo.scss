@@ -7,6 +7,14 @@ $button-normal-background: #334455;
 $button-text: #FFF;
 $button-selected-background: #44bbff; 
 
+.label-button{
+  display: inline-block;
+  color: $button-text;
+  background: $button-normal-background;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
 body{
   background: $main-background;
   @include transition-duration(.5s);
@@ -31,15 +39,21 @@ body{
     list-style: none;
     margin: 10px 0 10px 0;
     padding: 0;
+    
+    p{
+      margin: 10px 0 0 0;
+      font-weight: bold;
+    }
 
     li{
-      display: inline-block;
-      color: $button-text;
-      background: $button-normal-background;
-      padding: 5px 10px;
-      border-radius: 3px;
+      @extend .label-button;
       cursor: pointer;
       margin: 0 3px 7px 0;
+
+      a, a:hover, a:visited{
+        color: #FFF;
+        text-decoration: none;
+      }
 
       &.selected{
         background: $button-selected-background;
@@ -107,6 +121,10 @@ body{
         display: none;
       }
 
+      &#sources-screen {
+        display: none;
+      }
+
       .note{
         color: $normal-text; 
         margin: 0;
@@ -121,6 +139,15 @@ body{
           background: $button-selected-background;
           color: $button-text;
         }
+      }
+      #about{
+        text-align: right;
+        padding: 3px 5px;
+        font-size: 1em;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        margin: -25px 0 0 0;
       }
     }
   }

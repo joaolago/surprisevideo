@@ -6,7 +6,8 @@ var Funny = (function(){
   return {
     shortList : shortList,
     mediumList : mediumList,
-    longList : longList
+    longList : longList, 
+    all : _.uniq(shortList.concat(mediumList, longList))
   }
 }());
 
@@ -18,7 +19,8 @@ var Interesting = (function(){
   return {
     shortList : shortList,
     mediumList : mediumList,
-    longList : longList
+    longList : longList,
+    all : _.uniq(shortList.concat(mediumList, longList))
   }
 }());
 
@@ -30,7 +32,8 @@ var Artsy = (function(){
   return {
     shortList : shortList,
     mediumList : mediumList,
-    longList : longList
+    longList : longList,
+    all : _.uniq(shortList.concat(mediumList, longList))
   }
 }());
 
@@ -42,6 +45,7 @@ var AllAuthors = (function(){
   return{
     shortList : shortList,
     mediumList : mediumList,
-    longList : longList
+    longList : longList,
+    all : _.uniq(shortList.concat(mediumList, longList))
   }
 }());

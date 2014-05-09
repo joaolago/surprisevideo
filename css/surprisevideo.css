@@ -1,3 +1,10 @@
+.label-button, body ul li {
+  display: inline-block;
+  color: white;
+  background: #334455;
+  padding: 5px 10px;
+  border-radius: 3px; }
+
 body {
   background: white;
   -webkit-transition-duration: 0.5s;
@@ -23,14 +30,15 @@ body {
     list-style: none;
     margin: 10px 0 10px 0;
     padding: 0; }
+    body ul p {
+      margin: 10px 0 0 0;
+      font-weight: bold; }
     body ul li {
-      display: inline-block;
-      color: white;
-      background: #334455;
-      padding: 5px 10px;
-      border-radius: 3px;
       cursor: pointer;
       margin: 0 3px 7px 0; }
+      body ul li a, body ul li a:hover, body ul li a:visited {
+        color: #FFF;
+        text-decoration: none; }
       body ul li.selected {
         background: #44bbff; }
   body h3 {
@@ -73,6 +81,8 @@ body {
             height: 100%; }
       body .content .screen#error-screen {
         display: none; }
+      body .content .screen#sources-screen {
+        display: none; }
       body .content .screen .note {
         color: black;
         margin: 0; }
@@ -83,6 +93,14 @@ body {
         body .content .screen .btn:hover {
           background: #44bbff;
           color: white; }
+      body .content .screen #about {
+        text-align: right;
+        padding: 3px 5px;
+        font-size: 1em;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        margin: -25px 0 0 0; }
   @media only screen and (max-width: 640px) {
     body h2 {
       font-size: 5em; }

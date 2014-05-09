@@ -1,6 +1,7 @@
 SurpriseVideo = ( function () {
   var youtube_id = "";
   var sublist;
+  var timeoutID;
 
   var init = function(){
     $( document ).ready( function () {
@@ -20,8 +21,25 @@ SurpriseVideo = ( function () {
     $('.genre').on( 'click', function(evt){  toggleGenre(evt); } );
     $( document ).on( 'click', '.reset', function(evt){  reset(evt); } );
     $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
+    $( document ).on( 'click', '#about', function(evt){  hideAllBut("#sources-screen"); } );
+    $( document ).on( 'mousemove', 'body', resetSleepTimer);
+    timeoutID = setTimeout( darkenButtons, 3000 );
 
     Youtube.init();
+    listAuthors();
+  }
+
+  var listAuthors = function () {
+    _.each(Artsy.all, function(index) {
+       $( "#artsy" ).append('<li><a href="http://www.youtube.com/'+ index +'" target="_blank">'+index+'</a></li>');
+    });
+    _.each(Funny.all, function(index, val) {
+       $( "#funny" ).append('<li><a href="http://www.youtube.com/'+ index +'" target="_blank">'+index+'</a></li>');
+    });
+    _.each(Interesting.all, function(index, val) {
+       $( "#interesting" ).append('<li><a href="http://www.youtube.com/'+ index +'"" target="_blank">'+index+'</a></li>');
+    });
+    
   }
 
   var toggleGenre = function (evt){
@@ -61,6 +79,16 @@ SurpriseVideo = ( function () {
     if(sublist.length < 1){
       $( ".get-me-another" ).hide();
     }
+  }
+
+  var darkenButtons = function () {
+    $( "#video-screen button" ).fadeTo(2000, 0.1 );
+  }
+
+  var resetSleepTimer = function () {
+    $( "#video-screen button" ).fadeTo(200, 1 );
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout( darkenButtons, 3000 );
   }
 
   var getNewVideo = function () {

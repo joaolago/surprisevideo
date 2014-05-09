@@ -23,7 +23,7 @@
     <div id="start-screen" class="screen">
       <h2>So you got some time to kill?</h2>
       <h3>Categorize it</h3>
-      <p class="note">Pick the type of video you'd like to watch. We curate youtube channels and add them to the list it fits best.</p>
+      <p class="note">Pick the type of video you'd like to watch. We curate youtube channels and add them to the list they fit best.</p>
       <ul class="genres">
         <li class="genre selected" data-name="all">all</li>
         <li class="genre" data-name="artsy">artsy</li>
@@ -32,12 +32,12 @@
       </ul>
 
       <h3>Time-box it</h3>
-      <p class="note">Drag the slider to set how much time you fill like spending</p>
-      <p class="note">I've got <span id="time">60</span> minutes</p>
+      <p class="note">Drag the slider to set how much time you fill like spending: <span id="time">60</span> minutes</p>
       <div id="slider"></div>
     
       <p class="note">Or just go crazy and click the button!</p>
       <button class="btn">Get me a video!</button>
+      <a id="about" href="javascript:void(0)">About</a>
     </div>
     <div id="video-screen" class="screen">
       <div id="video-wrapper">
@@ -50,6 +50,28 @@
       <div class="error">
         <h2>We seem to have found no videos, sorry :S</h2>
         <h3>Maybe try again?</h3>
+        <button class="btn reset">Back to Start</button>
+      </div>
+    </div>
+    <div id="sources-screen" class="screen">
+      <div>
+        <h2>Curious to see what you might find?</h2>
+        <h3>Here's the list of Youtube authors, creators and general good people we are currently showing:</h3>
+        <ul class="authors-list" id="artsy">
+          <p>Artsy</p>
+        </ul>
+        <ul class="authors-list" id="funny">
+          <p>Funny</p>
+        </ul>
+        <ul class="authors-list" id="interesting">
+          <p>Interesting</p>
+        </ul>
+        <p>
+          All authors are curated and assigned to a catergory by me. If any of the content you find here offends you, please ponder the seriousness and gravity of the offense before directing it to me, the owner of the Youtube channel it came from or the author of the video. I am be happy to help you out in any way I can in making the internet a better, safer and funnier place, especially the corners of it I control, but I will not abide by gratuitous censorship.
+        </p>
+        <p>
+          If you feel like helping out, get in touch! I am open to suggestions on new features, cool videos, brands of whisky or cooking recipes!
+        </p>
         <button class="btn reset">Back to Start</button>
       </div>
     </div>
