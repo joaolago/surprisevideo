@@ -19,7 +19,7 @@ var Youtube = ( function () {
           wmode: "transparent"
         },
         events: {
-          'onStateChange': Youtube.onPlayerStateChange
+          'onStateChange': onPlayerStateChange
         }
       });
 
@@ -28,11 +28,12 @@ var Youtube = ( function () {
   }
 
   var onPlayerStateChange = function (event) {
-    $(document).trigger(event.data.toString());
+    $(document).trigger("YoutubeEvent", [event.data.toString()]);
   }
 
   return {
     init : init,
-    player : player
+    player : player,
+    ended : 0
   }
 }());

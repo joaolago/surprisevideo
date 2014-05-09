@@ -48,7 +48,7 @@ body {
     font-size: 54px; }
   body .content {
     max-width: 800px;
-    margin: 50px auto; }
+    margin: 50px auto 10px; }
     body .content #start-screen #slider {
       width: 95%;
       margin: 10px auto 30px;
@@ -82,6 +82,8 @@ body {
       body .content .screen#error-screen {
         display: none; }
       body .content .screen#sources-screen {
+        display: none; }
+      body .content .screen#end-screen {
         display: none; }
       body .content .screen .note {
         color: black;

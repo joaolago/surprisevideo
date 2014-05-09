@@ -11,8 +11,8 @@ SurpriseVideo = ( function () {
         max: 120,
         min: 1,
         value: 60, 
-        slide: function(){$("#time").text($("#slider").slider("value"))},
-        change: function(){$("#time").text($("#slider").slider("value"))}
+        slide: function(){ $("#time").text($("#slider").slider("value")) },
+        change: function(){ $("#time").text($("#slider").slider("value")) }
       });
     });
 
@@ -23,11 +23,17 @@ SurpriseVideo = ( function () {
     $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
     $( document ).on( 'click', '#about', function(evt){  hideAllBut("#sources-screen"); } );
     $( document ).on( 'mousemove', 'body', resetSleepTimer);
+    $(document).on( "YoutubeEvent", function(event, type){
+      if(type === "0"){
+        showEndScreen();
+      }
+    });
+
     timeoutID = setTimeout( darkenButtons, 3000 );
 
     Youtube.init();
     listAuthors();
-  }
+  };
 
   var listAuthors = function () {
     _.each(Artsy.all, function(index) {
@@ -39,19 +45,18 @@ SurpriseVideo = ( function () {
     _.each(Interesting.all, function(index, val) {
        $( "#interesting" ).append('<li><a href="http://www.youtube.com/'+ index +'"" target="_blank">'+index+'</a></li>');
     });
-    
-  }
+  };
 
   var toggleGenre = function (evt){
     var target = $(evt.target);
     $( ".genre" ).removeClass('selected');
     
     target.addClass('selected');
-  }
+  };
 
   var assembleCategories = function(){
     return _.map($(".category.selected"),function(item){return $(item).data("name")}).join();
-  }
+  };
 
   var reset = function(){
     if(Youtube.player){
@@ -59,7 +64,7 @@ SurpriseVideo = ( function () {
     }
     hideAllBut("#start-screen"); 
     $( "body" ).removeClass( "video-on" );
-  }
+  };
 
   var hideAllBut = function(keepalive){
     $( ".screen" ).fadeOut("fast", function(evt){
@@ -67,7 +72,7 @@ SurpriseVideo = ( function () {
         $( keepalive ).fadeIn("fast");
       }
     });
-  }
+  };
 
   var getAnotherVideo = function () {
     youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
@@ -79,17 +84,17 @@ SurpriseVideo = ( function () {
     if(sublist.length < 1){
       $( ".get-me-another" ).hide();
     }
-  }
+  };
 
   var darkenButtons = function () {
     $( "#video-screen button" ).fadeTo(2000, 0.1 );
-  }
+  };
 
   var resetSleepTimer = function () {
     $( "#video-screen button" ).fadeTo(200, 1 );
     clearTimeout(timeoutID);
     timeoutID = setTimeout( darkenButtons, 3000 );
-  }
+  };
 
   var getNewVideo = function () {
     var selectedAuthor = $(".genre.selected").data("name") == undefined ? "all" : $(".genre.selected").data("name");
@@ -127,6 +132,7 @@ SurpriseVideo = ( function () {
  
     if( selectedAuthor != ""){
       searchString += "author=" + author[selectedAuthor] + "&";
+      $( "#author-link" ).attr("href", "http://www.youtube.com/"+author[selectedAuthor]);
     }
 
     searchString += "alt=json&max-results=50&v=2";
@@ -157,6 +163,11 @@ SurpriseVideo = ( function () {
         }
       }
     ); 
+  };
+
+  var showEndScreen = function () {
+    hideAllBut( "#end-screen" );
+    $( "body" ).removeClass( "video-on" );
   };
 
   return {

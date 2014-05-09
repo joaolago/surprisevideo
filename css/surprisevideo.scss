@@ -72,7 +72,7 @@ body{
 
   .content{
     max-width: 800px;
-    margin: 50px auto;
+    margin: 50px auto 10px;
 
     #start-screen{
       #slider{
@@ -94,7 +94,6 @@ body{
       padding: 30px;
       border: solid 1px #ccc;
       @include transition-duration(.5s);
-
 
       &#video-screen{
         display: none;
@@ -122,6 +121,10 @@ body{
       }
 
       &#sources-screen {
+        display: none;
+      }
+
+      &#end-screen{
         display: none;
       }
 
