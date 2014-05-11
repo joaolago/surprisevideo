@@ -114,6 +114,11 @@ body{
             height: 100%;
           } 
         }
+
+        button.darken{
+          transition: 2s;
+          opacity: 0.1;
+        }
       }
       
       &#error-screen{
@@ -153,71 +158,84 @@ body{
         margin: -25px 0 0 0;
       }
     }
-  }
-
-  @media only screen and (max-width: 640px){
-    h2{
-      font-size: 5em;
-    }
-    h3{
-      font-size: 3.5em;
-      margin-top: 1em;
-    }
-    .note{
-      font-size: 2em;
-    }
-    .genre{
-      font-size: 2em;
-      padding: 5px 20px;
-    }
-
-    .ui-widget{
-      font-size: 2.1em !important;
-    }
-
-    button{
-      font-size: 2em !important;
-    }
-
+    
+    
   }
 
   #footer{
     color: $normal-text;
     text-align: center;
-    font-size: 12px;
+    font-size: 1em;
     margin: 5px;
     @include transition-duration(.5s);
   }
 
+  @media only screen and (max-width: 640px){
+    h2{
+      font-size: 2em;
+    }
+    h3{
+      font-size: 1.5em;
+      margin-top: 1em;
+    }
+    .note{
+      font-size: 1.1em;
+    }
+    .genre{
+      font-size: 1em;
+      padding: 5px 20px;
+    }
+
+    .ui-widget{
+      font-size: 1.2em !important;
+    }
+
+    button{
+      font-size: 1em !important;
+    }
+  }
+
   @media only screen and (max-width: 1136px){
     .content {
-      margin: 0;
+      margin: 0 auto;
     }
 
     #slider{
       width: 100%;
       margin: 40px auto 30px;
     }
+
+    #video-screen{
+      text-align: center;
+      
+      .darken{
+        transition: 0 !important;
+        opacity: 1 !important;
+      }
+    }
   }
 
   @media only screen and (max-width: 1135px) and (orientation: landscape){
-    h2{
-      font-size: 3em;
+    .content {
+      width: 100%;
+      margin: 0 auto;
     }
-    h3{
-      font-size: 2.5em;
-      margin-top: 1em;
+    
+    #video-screen{
+      #video-wrapper{
+        width: 60% !important;
+        padding-top: 36.25% !important;
+        position: relative !important;
+        margin: 0 auto !important;
+      } 
     }
-    .note{
-      font-size: 1.5em;
-    }
-    .genre{
-      font-size: 1.5em;
-      padding: 5px 20px;
+
+    #footer{
+      font-size: 1em;
     }
 
     button{
-      font-size: 1.5em !important;
+      font-size: 1em !important;
     }
   }
 }

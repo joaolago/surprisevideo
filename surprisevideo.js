@@ -87,11 +87,11 @@ SurpriseVideo = ( function () {
   };
 
   var darkenButtons = function () {
-    $( "#video-screen button" ).fadeTo(2000, 0.1 );
+    $( "#video-screen button" ).addClass("darken");
   };
 
   var resetSleepTimer = function () {
-    $( "#video-screen button" ).fadeTo(200, 1 );
+    $( "#video-screen button" ).removeClass("darken");
     clearTimeout(timeoutID);
     timeoutID = setTimeout( darkenButtons, 3000 );
   };
