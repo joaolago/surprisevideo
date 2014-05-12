@@ -39,6 +39,9 @@ body {
       body ul li a, body ul li a:hover, body ul li a:visited {
         color: #FFF;
         text-decoration: none; }
+      body ul li:active {
+        background: #44bbff;
+        color: white; }
       body ul li.selected {
         background: #44bbff; }
   body h3 {
@@ -50,7 +53,7 @@ body {
     max-width: 800px;
     margin: 50px auto 10px; }
     body .content #start-screen #slider {
-      width: 95%;
+      width: 100%;
       margin: 10px auto 30px;
       background: #334455; }
       body .content #start-screen #slider .ui-slider-range {
@@ -95,7 +98,7 @@ body {
         background: #334455;
         color: white;
         margin: 15px 0 0 0; }
-        body .content .screen .btn:hover {
+        body .content .screen .btn:active {
           background: #44bbff;
           color: white; }
       body .content .screen #about {
@@ -116,10 +119,13 @@ body {
     transition-duration: 0.5s; }
   @media only screen and (max-width: 640px) {
     body h2 {
-      font-size: 2em; }
+      font-size: 2em;
+      margin-top: 0; }
     body h3 {
       font-size: 1.5em;
       margin-top: 1em; }
+    body .screen {
+      padding: 15px !important; }
     body .note {
       font-size: 1.1em; }
     body .genre {

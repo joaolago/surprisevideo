@@ -5,12 +5,15 @@ SurpriseVideo = ( function () {
 
   var init = function(){
     $( document ).ready( function () {
-      $("#slider").slider({
-        orientation: "horizontal",
-        range: "min",
-        max: 120,
-        min: 1,
-        value: 60, 
+      $("#slider").noUiSlider({
+        range: {
+          "min": 0,
+          "max": 120
+        },
+        step: 1,
+        start: 60,
+        value: 60,
+        connect: "lower", 
         slide: function(){ $("#time").text($("#slider").slider("value")) },
         change: function(){ $("#time").text($("#slider").slider("value")) }
       });
@@ -23,6 +26,8 @@ SurpriseVideo = ( function () {
     $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
     $( document ).on( 'click', '#about', function(evt){  hideAllBut("#sources-screen"); } );
     $( document ).on( 'mousemove', 'body', resetSleepTimer);
+    $( "#slider" ).on( 'slide', function(){ $("#time").text(Math.floor($("#slider").val())); });
+
     $(document).on( "YoutubeEvent", function(event, type){
       if(type === "0"){
         showEndScreen();
@@ -67,19 +72,23 @@ SurpriseVideo = ( function () {
   };
 
   var hideAllBut = function(keepalive){
-    $( ".screen" ).fadeOut("fast", function(evt){
-      if( _.where(_.map($(".screen"), function(v){return $(v).css("display")}), "block").length == 0 ){
-        $( keepalive ).fadeIn("fast");
-      }
+    $( ".screen" ).animate(
+      {"opacity": 0}, 
+      "fast", 
+      "linear", 
+      function(){
+        $( ".screen" ).hide();
+        if( _.where(_.map($(".screen"), function(v){return $(v).css("display")}), "block").length == 0 ){
+          $( keepalive ).show().animate({"opacity": 1},"fast", "ease");
+        }
     });
   };
 
   var getAnotherVideo = function () {
     youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
-
-    if(Youtube.player){
-      Youtube.player.loadVideoById( youtube_id.toString() );
-    }
+    
+    $( "#video-wrapper" ).html("<div id='player'></div>");
+    Youtube.loadVideo({videoId: youtube_id.toString()});
 
     if(sublist.length < 1){
       $( ".get-me-another" ).hide();
@@ -102,7 +111,7 @@ SurpriseVideo = ( function () {
 
     var searchString = "https://gdata.youtube.com/feeds/api/videos/?";
     
-    var durationValue = $( "#slider" ).slider( "value" )*60;
+    var durationValue = $( "#slider" ).val()*60;
     if(durationValue <= 240) // less than 4 minutes
     {
       searchString += "duration=short&";
@@ -152,9 +161,8 @@ SurpriseVideo = ( function () {
 
           youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
 
-          if(Youtube.player){
-            Youtube.player.loadVideoById( youtube_id.toString() );
-          }
+          $( "#video-wrapper" ).html("<div id='player'></div>");
+          Youtube.loadVideo({videoId: youtube_id.toString()});
 
           hideAllBut( "#video-screen" );
           $( "body" ).addClass( "video-on" );

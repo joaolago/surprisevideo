@@ -54,6 +54,10 @@ body{
         color: #FFF;
         text-decoration: none;
       }
+      &:active{
+        background: $button-selected-background;
+        color: $button-text;
+      }
 
       &.selected{
         background: $button-selected-background;
@@ -76,7 +80,7 @@ body{
 
     #start-screen{
       #slider{
-        width: 95%;
+        width: 100%;
         margin: 10px auto 30px;
         background: #334455;
 
@@ -143,7 +147,7 @@ body{
         color: $button-text;
         margin: 15px 0 0 0; 
 
-        &:hover{
+        &:active{
           background: $button-selected-background;
           color: $button-text;
         }
@@ -173,10 +177,14 @@ body{
   @media only screen and (max-width: 640px){
     h2{
       font-size: 2em;
+      margin-top: 0;
     }
     h3{
       font-size: 1.5em;
       margin-top: 1em;
+    }
+    .screen{
+      padding: 15px !important;
     }
     .note{
       font-size: 1.1em;
