@@ -19,15 +19,15 @@ SurpriseVideo = ( function () {
       });
     });
 
-    $('#start-screen button').on( 'click', function(){ getNewVideo(); } );
-    $('.category').on( 'click', function(evt){ toggleCategory(evt); } );
-    $('.genre').on( 'click', function(evt){  toggleGenre(evt); } );
+    $( '#start-screen button' ).on( 'click', function(){ getNewVideo(); } );
+    $( '.genre' ).on( 'click', toggleGenre );
+    $( "#slider" ).on( 'slide', function(){ $("#time").text(Math.floor($("#slider").val())); });
     $( document ).on( 'click', '.reset', function(evt){  reset(evt); } );
     $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
-    $( document ).on( 'click', '#about', function(evt){  hideAllBut("#sources-screen"); } );
     $( document ).on( 'mousemove', 'body', resetSleepTimer);
-    $( "#slider" ).on( 'slide', function(){ $("#time").text(Math.floor($("#slider").val())); });
-
+    $( document ).on( 'click', '#about', function(evt){  
+      hideAllBut("#sources-screen"); 
+    });
     $(document).on( "YoutubeEvent", function(event, type){
       if(type === "0"){
         showEndScreen();
@@ -54,6 +54,7 @@ SurpriseVideo = ( function () {
 
   var toggleGenre = function (evt){
     var target = $(evt.target);
+
     $( ".genre" ).removeClass('selected');
     
     target.addClass('selected');
@@ -86,7 +87,7 @@ SurpriseVideo = ( function () {
 
   var getAnotherVideo = function () {
     youtube_id = sublist.pop().id.$t.match(/video:(\S*.)/)[1];
-    
+
     $( "#video-wrapper" ).html("<div id='player'></div>");
     Youtube.loadVideo({videoId: youtube_id.toString()});
 

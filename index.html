@@ -12,6 +12,7 @@
   <script type="text/javascript" src="vendor/js/underscore-min.js"></script>
 
   <script type="text/javascript" src="youtube.js"></script>
+  <script type="text/javascript" src="google_analytics.js"></script>
   <script type="text/javascript" src="sources.js"></script>
   <script type="text/javascript" src="surprisevideo.js"></script>
   
@@ -21,6 +22,7 @@
     window.addEventListener('load', function() {
       FastClick.attach(document.body);
     }, false);
+    GoogleAnalytics.init();
   </script>
 </head>
 
@@ -41,6 +43,7 @@
       <p class="note">Drag the slider to set how much time you feel like spending: <span id="time">60</span> minutes</p>
       <div id="slider"></div>
     
+      <h3>Watch it</h3>
       <p class="note">Or just go crazy and click the button!</p>
       <button class="btn">Get me a video!</button>
       <a id="about" href="javascript:void(0)">About</a>
@@ -70,7 +73,7 @@
           A word from our sponsors:
         </p>
         <div></div>
-        <p><a href="mailto:mainprocrastinator@surprisevideo.com">Let me know</a> if you have any suggestions regarding this website. I need all the help I can get to make this website prettier, more useful and generally better for you!</p>
+        <p><a id="contact" href="mailto:mainprocrastinator@surprisevideo.com">Let me know</a> if you have any suggestions regarding this website. I need all the help I can get to make this website prettier, more useful and generally better for you!</p>
         <p class="note">Feel like procrastinating a bit more?</p>
         <button class="btn reset">Back to Start</button>
       </div>
