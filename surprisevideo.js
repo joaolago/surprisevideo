@@ -182,5 +182,4 @@ SurpriseVideo = ( function () {
   return {
     init: init
   }
-  
 }());

@@ -83,13 +83,6 @@ body{
         width: 100%;
         margin: 10px auto 30px;
         background: #334455;
-
-        .ui-slider-range{
-          background: #44bbff;
-        }
-        .ui-slider-handle{
-          background: #FFF !important;
-        }
       }
     }
 
@@ -152,14 +145,16 @@ body{
           color: $button-text;
         }
       }
-      #about{
+      .about{
         text-align: right;
         padding: 3px 5px;
-        font-size: 1em;
-        color: #000;
-        text-decoration: underline;
-        display: block;
         margin: -25px 0 0 0;
+
+        #about{
+          font-size: 1em;
+          color: #000;
+          text-decoration: underline;
+        }
       }
     }
     
@@ -192,10 +187,6 @@ body{
     .genre{
       font-size: 1em;
       padding: 5px 20px;
-    }
-
-    .ui-widget{
-      font-size: 1.2em !important;
     }
 
     button{

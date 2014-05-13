@@ -56,10 +56,6 @@ body {
       width: 100%;
       margin: 10px auto 30px;
       background: #334455; }
-      body .content #start-screen #slider .ui-slider-range {
-        background: #44bbff; }
-      body .content #start-screen #slider .ui-slider-handle {
-        background: #FFF !important; }
     body .content .screen {
       background: #f1f1f1;
       padding: 30px;
@@ -101,14 +97,14 @@ body {
         body .content .screen .btn:active {
           background: #44bbff;
           color: white; }
-      body .content .screen #about {
+      body .content .screen .about {
         text-align: right;
         padding: 3px 5px;
-        font-size: 1em;
-        color: #000;
-        text-decoration: underline;
-        display: block;
         margin: -25px 0 0 0; }
+        body .content .screen .about #about {
+          font-size: 1em;
+          color: #000;
+          text-decoration: underline; }
   body #footer {
     color: black;
     text-align: center;
@@ -131,8 +127,6 @@ body {
     body .genre {
       font-size: 1em;
       padding: 5px 20px; }
-    body .ui-widget {
-      font-size: 1.2em !important; }
     body button {
       font-size: 1em !important; } }
   @media only screen and (max-width: 1136px) {
