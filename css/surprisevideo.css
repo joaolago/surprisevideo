@@ -136,10 +136,7 @@ body {
       width: 100%;
       margin: 40px auto 30px; }
     body #video-screen {
-      text-align: center; }
-      body #video-screen .darken {
-        transition: 0 !important;
-        opacity: 1 !important; } }
+      text-align: center; } }
   @media only screen and (max-width: 1135px) and (orientation: landscape) {
     body .content {
       width: 100%;

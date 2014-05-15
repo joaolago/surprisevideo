@@ -25,6 +25,7 @@ SurpriseVideo = ( function () {
     $( document ).on( 'click', '.reset', function(evt){  reset(evt); } );
     $( document ).on( 'click', '.get-me-another', function(evt){  getAnotherVideo(); } );
     $( document ).on( 'mousemove', 'body', resetSleepTimer);
+    $( document ).on( 'click', 'body', resetSleepTimer);
     $( document ).on( 'click', '#about', function(evt){  
       hideAllBut("#sources-screen"); 
     });
@@ -41,13 +42,13 @@ SurpriseVideo = ( function () {
   };
 
   var listAuthors = function () {
-    _.each(Artsy.all, function(index) {
+    _.each(artsy.all, function(index) {
        $( "#artsy" ).append('<li><a href="http://www.youtube.com/'+ index +'" target="_blank">'+index+'</a></li>');
     });
-    _.each(Funny.all, function(index, val) {
+    _.each(funny.all, function(index, val) {
        $( "#funny" ).append('<li><a href="http://www.youtube.com/'+ index +'" target="_blank">'+index+'</a></li>');
     });
-    _.each(Interesting.all, function(index, val) {
+    _.each(interesting.all, function(index, val) {
        $( "#interesting" ).append('<li><a href="http://www.youtube.com/'+ index +'"" target="_blank">'+index+'</a></li>');
     });
   };
@@ -117,25 +118,25 @@ SurpriseVideo = ( function () {
     {
       searchString += "duration=short&";
       author = {
-        "artsy" : _.sample(Artsy.shortList),
-        "interesting" : _.sample(Interesting.shortList),
-        "funny" : _.sample(Funny.shortList), 
-        "all" : _.sample(AllAuthors.shortList)
+        "artsy" : _.sample(artsy.shortList),
+        "interesting" : _.sample(interesting.shortList),
+        "funny" : _.sample(funny.shortList), 
+        "all" : _.sample(allAuthors.shortList)
       }
     }else if(durationValue > 240 && durationValue <= 1200){ // up to 20 minutes
       author = {
-        "artsy" : _.sample(Artsy.mediumList),
-        "interesting" : _.sample(Interesting.mediumList),
-        "funny" : _.sample(Funny.mediumList),
-        "all" : _.sample(AllAuthors.mediumList)
+        "artsy" : _.sample(artsy.mediumList),
+        "interesting" : _.sample(interesting.mediumList),
+        "funny" : _.sample(funny.mediumList),
+        "all" : _.sample(allAuthors.mediumList)
       };
       searchString += "duration=medium&";
     }else{ //more than 20 minutes
       author = {
-        "artsy" : _.sample(Artsy.longList),
-        "interesting" : _.sample(Interesting.longList),
-        "funny" : _.sample(Funny.longList), 
-        "all" : _.sample(AllAuthors.longList)
+        "artsy" : _.sample(artsy.longList),
+        "interesting" : _.sample(interesting.longList),
+        "funny" : _.sample(funny.longList), 
+        "all" : _.sample(allAuthors.longList)
       }
       searchString += "duration=long&";
     }
@@ -146,10 +147,12 @@ SurpriseVideo = ( function () {
     }
 
     searchString += "alt=json&max-results=50&v=2";
+    console.log(searchString)
 
     $.get(searchString,
       {}, 
       function(data){
+        //console.log(data)
         if(data.feed.entry){
 
           var sorted = _(data.feed.entry).sortBy(function(entry){

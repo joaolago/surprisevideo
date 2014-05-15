@@ -111,7 +111,7 @@ body{
             height: 100%;
           } 
         }
-
+        
         button.darken{
           transition: 2s;
           opacity: 0.1;
@@ -207,10 +207,7 @@ body{
     #video-screen{
       text-align: center;
       
-      .darken{
-        transition: 0 !important;
-        opacity: 1 !important;
-      }
+      
     }
   }
 
